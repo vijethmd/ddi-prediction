@@ -1,0 +1,1 @@
+# rdkit moved to requirements.txt -- it is a hard dependency, not an extra.

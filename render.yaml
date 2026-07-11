@@ -1,0 +1,22 @@
+# Render Blueprint. Deploys the FastAPI service from the Dockerfile, which
+# installs RDKit's system libs and bakes in the model bundle + drug reference.
+# The Streamlit demo UI is deployed separately on Streamlit Cloud (see DEPLOY.md).
+services:
+  - type: web
+    name: ddi-prediction-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: DDI_MODEL_PATH
+        value: /app/models/ddi_bundle.joblib
+      - key: DDI_REFERENCE_PATH
+        value: /app/data/processed/drug_reference.json
+      # Offline serving by default; set to "1" only to allow PubChem fallback.
+      - key: DDI_ALLOW_NETWORK
+        value: "0"
+      # Lock CORS to the deployed Streamlit origin. Replace with the real URL
+      # once the Streamlit app is live.
+      - key: DDI_CORS_ORIGINS
+        value: "https://drugdrug.streamlit.app"

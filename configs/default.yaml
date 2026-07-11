@@ -1,0 +1,43 @@
+# Default configuration for the DDI training pipeline.
+
+data:
+  xml_path: data/raw/full_database.xml
+  pairs_csv: data/processed/drugbank_ddi.csv
+  labelled_csv: data/processed/drugbank_ddi_labelled.csv
+  features_npz: data/processed/features.npz
+  feature_limit: 50000
+
+classes:
+  names: [No Interaction, Moderate, Severe, Synergistic, Antagonistic]
+  severe_label: 2
+
+two_stage:
+  gate_threshold: 0.30
+  use_adasyn: true
+  stage2_weights:
+    moderate: 1.5
+    severe: 5.0
+    synergistic: 3.0
+    antagonistic: 3.0
+
+enhance:
+  pruning:
+    coverage: 0.95
+    protected_substrings: [cyp, tanimoto, target_overlap]
+  calibration:
+    method: isotonic
+  conformal:
+    score: aps
+    alpha_per_class:
+      no_interaction: 0.10
+      moderate: 0.10
+      severe: 0.05
+      synergistic: 0.10
+      antagonistic: 0.10
+
+targets:
+  severe_recall: 0.90
+  macro_f1: 0.80
+
+output:
+  model_bundle: models/ddi_bundle.joblib

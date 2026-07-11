@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+.DS_Store
+.ipynb_checkpoints/
+
+# Raw DrugBank corpus (~1.9 GB) and large regenerable intermediates.
+# Rebuild with `make pipeline` once data/raw/full_database.xml is in place.
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*.csv
+data/processed/*.npz
+
+# The model bundle (models/ddi_bundle.joblib) and the drug reference
+# (data/processed/drug_reference.json) ARE tracked on purpose: the deployed app
+# loads them at startup, and a Streamlit Cloud / Render clone has no other source
+# for them (the 1.9 GB XML they are built from is not in the repo).

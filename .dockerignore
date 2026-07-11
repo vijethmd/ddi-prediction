@@ -1,0 +1,11 @@
+.git
+__pycache__/
+*.pyc
+data/raw/
+data/processed/*.csv
+data/processed/*.npz
+figs/
+paper/
+notebooks/
+tests/
+.venv/

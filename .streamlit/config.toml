@@ -1,0 +1,11 @@
+# Streamlit Cloud reads this automatically. Entry file: app/streamlit_app.py
+[theme]
+primaryColor = "#0f6e56"
+base = "light"
+
+[server]
+headless = true
+enableXsrfProtection = true
+
+[browser]
+gatherUsageStats = false
