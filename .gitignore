@@ -22,3 +22,8 @@ data/processed/*.npz
 # (data/processed/drug_reference.json) ARE tracked on purpose: the deployed app
 # loads them at startup, and a Streamlit Cloud / Render clone has no other source
 # for them (the 1.9 GB XML they are built from is not in the repo).
+
+# The manuscript is kept LOCAL ONLY -- it is unpublished and must never be
+# pushed. The paper/ folder lives here for convenience (edit + compile next to
+# the code) but is deliberately excluded from the repo.
+paper/
