@@ -4,7 +4,7 @@ The repo ships the trained model bundle (`models/ddi_bundle.joblib`) and the
 drug reference (`data/processed/drug_reference.json`), so both targets below
 deploy straight from a clone with no data-build step.
 
-## Streamlit Cloud (the demo UI — drugdrug.streamlit.app)
+## Streamlit Cloud (the web UI)
 
 Streamlit Cloud builds from this repo directly:
 
